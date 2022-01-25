@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Threading.Tasks;
 
-namespace Astar.REST
+namespace AICUBE.REST
 {
     [System.Serializable]
     public class Options
@@ -130,7 +130,7 @@ namespace Astar.REST
                 {
                     string result = webResult.downloadHandler.text.Trim();
                     //Debug.Log(result);
-                    if (typeof(Receive).Name == typeof(Astar.REST.CNY.CNY_Phrases).Name)
+                    if (typeof(Receive).Name == typeof(AICUBE.REST.CNY.CNY_Phrases).Name)
                     {
                         int removeCount = 0;
                         result = "{ \"data\" :" + result.Substring(removeCount, result.Length - removeCount) + "}";
@@ -154,7 +154,7 @@ namespace Astar.REST
             {
                 if (debugOn)
                 {
-                    Astar.Utils.ErrorUtils.printAllErrors(ex);
+                    AICUBE.Utils.ErrorUtils.printAllErrors(ex);
                 }
             }
 

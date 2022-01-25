@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Astar.REST
+namespace AICUBE.REST
 {
     #region SmileforXmas
     namespace SmileForXmas

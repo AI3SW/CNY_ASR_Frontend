@@ -14,17 +14,17 @@ using System.Net.NetworkInformation;
 //using NAudio;
 //using NAudio.Wave;
 using UnityEngine;
-namespace Astar.WebSocket
+namespace AICUBE.WebSocket
 {
 	/// <summary>
 	/// T needs to be an jsonObject DataContract, and needs the server to send it in the same data contract format
 	/// Else the class will simply call the callback for onByteResults.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public class AStarWebSocketStreamController<T>
+	public class AICUBEWebSocketStreamController<T>
 	{
 		//public static System.Net.Security.RemoteCertificateValidationCallback ServerCertificateValidationCallback { get; set; }
-		public AStarWebSocketStreamController(string url, int reconnectionDelay = 300, int reconnectionCount = 3, string ping_ip = "www.google.com")
+		public AICUBEWebSocketStreamController(string url, int reconnectionDelay = 300, int reconnectionCount = 3, string ping_ip = "www.google.com")
 		{
 			_running = false;
 			_ws = null;
@@ -101,7 +101,7 @@ namespace Astar.WebSocket
 			}
 			catch (Exception ex)
 			{
-				Astar.Utils.ErrorUtils.printAllErrors(ex);
+				AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 				if (ex.Message.Contains("Unable to connect to the remote server"))
                 {
 					Debug.LogWarning("check for wifi / connection and try again");
@@ -129,7 +129,7 @@ namespace Astar.WebSocket
 					}
 					catch (Exception ex)
 					{
-						Astar.Utils.ErrorUtils.printAllErrors(ex);
+						AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 					}
 				}
 				//Debug.Log("socket state " + _ws.State);
@@ -146,7 +146,7 @@ namespace Astar.WebSocket
 			}*/
 		}
 
-		public async Task stream(Utils.AstarStreamWrapper streamWrapper)
+		public async Task stream(Utils.AICUBEStreamWrapper streamWrapper)
 		{
 			if(_ws != null && _running)
             {
@@ -154,7 +154,7 @@ namespace Astar.WebSocket
                 {
 					switch (streamWrapper.usageType)
 					{
-						//case Utils.AstarStreamWrapper.wsUsage.ASR_DAT: // DAT data is light weight
+						//case Utils.AICUBEStreamWrapper.wsUsage.ASR_DAT: // DAT data is light weight
 						//	await _ws.SendAsync(streamWrapper.outMsg, streamWrapper.messageType, true, CancellationToken.None);
 						//	break;
 						default:// for string and unformatted binary, we ensure that they are send in proper chunks if they exceed limit
@@ -185,7 +185,7 @@ namespace Astar.WebSocket
 				catch (Exception ex)
                 {
 					sendingStream = false;
-					Astar.Utils.ErrorUtils.printAllErrors(ex);
+					AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 					//exit();
 					//
 				}
@@ -195,12 +195,12 @@ namespace Astar.WebSocket
 		}
 
 		//T will be the Json object to be serialized into;
-		private Astar.Utils.Websocket.OnStreamResultEventArgs<T> parseBufferIntoJson(byte[] buf, int length, int ind = 0)
+		private AICUBE.Utils.Websocket.OnStreamResultEventArgs<T> parseBufferIntoJson(byte[] buf, int length, int ind = 0)
 		{
 			MemoryStream stream = new MemoryStream(buf, ind, length);
 
 			DataContractJsonSerializer s = new DataContractJsonSerializer(typeof(T));
-			Astar.Utils.Websocket.OnStreamResultEventArgs<T> args = new Astar.Utils.Websocket.OnStreamResultEventArgs<T>();
+			AICUBE.Utils.Websocket.OnStreamResultEventArgs<T> args = new AICUBE.Utils.Websocket.OnStreamResultEventArgs<T>();
 			try
 			{
 				T result = (T)s.ReadObject(stream);
@@ -210,15 +210,15 @@ namespace Astar.WebSocket
 			catch (Exception ex)
 			{
 				args.parseError = true;
-				Astar.Utils.ErrorUtils.printAllErrors(ex);
+				AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 			}
 			return args;
 		}
 
-		private Astar.Utils.Websocket.OnStreamResultEventArgs<string> parseBufferIntoString(byte[] buf)
+		private AICUBE.Utils.Websocket.OnStreamResultEventArgs<string> parseBufferIntoString(byte[] buf)
 		{
 
-			Astar.Utils.Websocket.OnStreamResultEventArgs<string> args = new Astar.Utils.Websocket.OnStreamResultEventArgs<string>();
+			AICUBE.Utils.Websocket.OnStreamResultEventArgs<string> args = new AICUBE.Utils.Websocket.OnStreamResultEventArgs<string>();
 			try
 			{
 				args.eventData = Encoding.UTF8.GetString(buf);
@@ -227,7 +227,7 @@ namespace Astar.WebSocket
 			catch (Exception ex)
 			{
 				args.parseError = true;
-				Astar.Utils.ErrorUtils.printAllErrors(ex);
+				AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 			}
 			return args;
 		}
@@ -344,7 +344,7 @@ namespace Astar.WebSocket
 				}
 				catch (System.Exception ex)
                 {
-					Astar.Utils.ErrorUtils.printAllErrors(ex);
+					AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 					//case 1, no network connection
 					if (_running)
                     {
@@ -409,7 +409,7 @@ namespace Astar.WebSocket
 
 					if (receivedResult.MessageType == WebSocketMessageType.Binary)
 					{
-						Astar.Utils.Websocket.OnStreamResultEventArgs<T> eventArgsJSON = parseBufferIntoJson(collectedByte.ToArray(), collectedByte.ToArray().Length);
+						AICUBE.Utils.Websocket.OnStreamResultEventArgs<T> eventArgsJSON = parseBufferIntoJson(collectedByte.ToArray(), collectedByte.ToArray().Length);
 						
 						if (!eventArgsJSON.parseError)
 						{
@@ -418,7 +418,7 @@ namespace Astar.WebSocket
 						}
 						else
                         {
-							Astar.Utils.Websocket.OnStreamResultEventArgs<byte[]> eventArgsByte = new Astar.Utils.Websocket.OnStreamResultEventArgs<byte[]>();
+							AICUBE.Utils.Websocket.OnStreamResultEventArgs<byte[]> eventArgsByte = new AICUBE.Utils.Websocket.OnStreamResultEventArgs<byte[]>();
 							eventArgsByte.eventData = collectedByte.ToArray();
 							OnByteResult?.Invoke(this, eventArgsByte);
 							Debug.LogWarning("Class Usage is incorrect or Json parsing has failed.");
@@ -428,7 +428,7 @@ namespace Astar.WebSocket
 					{
 
 						//Debug.Log("receiving");
-						Astar.Utils.Websocket.OnStreamResultEventArgs<string> eventArgsString = parseBufferIntoString(collectedMsg.ToArray());
+						AICUBE.Utils.Websocket.OnStreamResultEventArgs<string> eventArgsString = parseBufferIntoString(collectedMsg.ToArray());
 						//Debug.Log(eventArgsString.eventData);
 						if (eventArgsString.eventData != null)
                         {
@@ -442,7 +442,7 @@ namespace Astar.WebSocket
 								string temp = eventArgsString.eventData;
 								//Debug.Log(temp);
 
-								Astar.Utils.Websocket.OnStreamResultEventArgs<T> eventArgsJSON = parseBufferIntoJson(collectedMsg.ToArray(),collectedMsg.ToArray().Length);
+								AICUBE.Utils.Websocket.OnStreamResultEventArgs<T> eventArgsJSON = parseBufferIntoJson(collectedMsg.ToArray(),collectedMsg.ToArray().Length);
 								if (!eventArgsJSON.parseError)
 								{
 									OnStreamResult?.Invoke(this, eventArgsJSON);
@@ -469,24 +469,24 @@ namespace Astar.WebSocket
 			catch (Exception ex)
 			{
 
-				Astar.Utils.ErrorUtils.printAllErrors(ex);
+				AICUBE.Utils.ErrorUtils.printAllErrors(ex);
 				//exit();
 				//throw new System.Exception("case is handled, throwing to end thread loop.");
 			}
 		}
-		
+
 		/*
 		private static void threadRecv(System.Object obj)
 		{
-			((AStarWebSocketStreamController<T>)obj).doThreadRecv();
+			((AICUBEWebSocketStreamController<T>)obj).doThreadRecv();
 		}
 		*/
 
-		
+
 		//Event or action
-		public event EventHandler<Astar.Utils.Websocket.OnStreamResultEventArgs<T>> OnStreamResult;
-		public event EventHandler<Astar.Utils.Websocket.OnStreamResultEventArgs<byte[]>> OnByteResult;
-		public event EventHandler<Astar.Utils.Websocket.OnStreamResultEventArgs<string>> OnStringResult;
+		public event EventHandler<AICUBE.Utils.Websocket.OnStreamResultEventArgs<T>> OnStreamResult;
+		public event EventHandler<AICUBE.Utils.Websocket.OnStreamResultEventArgs<byte[]>> OnByteResult;
+		public event EventHandler<AICUBE.Utils.Websocket.OnStreamResultEventArgs<string>> OnStringResult;
 		public event Action OnConnect;
 		public event Action OnReconnect;
 		public event Action OnUnexpectedDisconnection;

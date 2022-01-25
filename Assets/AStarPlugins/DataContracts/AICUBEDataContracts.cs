@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Astar.WebSocket.DataContracts.Receive
+namespace AICUBE.WebSocket.DataContracts.Receive
 {
 	namespace HLTASRLib
 	{
@@ -34,7 +34,7 @@ namespace Astar.WebSocket.DataContracts.Receive
 
 
 }
-namespace Astar.WebSocket
+namespace AICUBE.WebSocket
 {
 	[Serializable]
 	[DataContract]

@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 using UnityEngine;
 
-namespace Astar.Utils
+namespace AICUBE.Utils
 {
     namespace Websocket
     {

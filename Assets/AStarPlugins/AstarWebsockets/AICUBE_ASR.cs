@@ -4,16 +4,16 @@ using System.Collections.Concurrent;
 using System;
 using System.Threading.Tasks;
 
-using Astar.WebSocket;
-using Astar.WebSocket.Utils;
-using Astar.WebSocket.DataContracts.Receive.HLTASRLib;
-using Astar.WebSocket.DataContracts.Receive;
+using AICUBE.WebSocket;
+using AICUBE.WebSocket.Utils;
+using AICUBE.WebSocket.DataContracts.Receive.HLTASRLib;
+using AICUBE.WebSocket.DataContracts.Receive;
 
 using TMPro;
 using UnityEngine;
 using System.IO;
 
-public class AStar_ASR : MonoBehaviour
+public class AICUBE_ASR : MonoBehaviour
 {
     #region Variables
     //textbox output
@@ -58,7 +58,7 @@ public class AStar_ASR : MonoBehaviour
 
     private string finalIP => useLocalhost ? "localhost" : hostIP;
     // creating a websocket connection than returns me this result of type ASRRESULT as stated in datacontract
-    public AStarWebSocketStreamController<ASRResult> websocket
+    public AICUBEWebSocketStreamController<ASRResult> websocket
     {
         get;
         private set;
@@ -101,13 +101,16 @@ public class AStar_ASR : MonoBehaviour
     public MicEncoder recorder;
     #endregion
 
+    public bool loadFromFile = false;
     #region UnityFunctions
     void Awake()
     {
         InitializeRecordingVariable();
         queueStreamResult = new ConcurrentQueue<ASRResult>();
         queueStringResult = new ConcurrentQueue<string>();
-        loadURLfromFile();
+        if (loadFromFile)
+            loadURLfromFile();
+
     }
 
     void loadURLfromFile()
@@ -145,8 +148,7 @@ public class AStar_ASR : MonoBehaviour
         //TextAsset configFile = Resources.Load("") as TextAsset;
         Debug.Log(data);
         configsettings = JsonUtility.FromJson<ASRConfigFile>(data);
-        hostIP = configsettings.ip;
-        port = configsettings.port;
+
     }
     public void Update() {
         ASRResult result;
@@ -162,7 +164,7 @@ public class AStar_ASR : MonoBehaviour
                 {
 
                     Debug.LogError("json result received is unidentified");
-                    Astar.Utils.ErrorUtils.printAllErrors(e);
+                    AICUBE.Utils.ErrorUtils.printAllErrors(e);
                 }
             }
         }
@@ -192,7 +194,7 @@ public class AStar_ASR : MonoBehaviour
                 if (useDebug)
                 {
                     Debug.LogError("string received is unidentified");
-                    Astar.Utils.ErrorUtils.printAllErrors(e);
+                    AICUBE.Utils.ErrorUtils.printAllErrors(e);
                 }
             }
         }
@@ -229,7 +231,7 @@ public class AStar_ASR : MonoBehaviour
                 if(directToDAT)
                 {
                     byte[] b = new byte[1] { 0 };
-                    AstarStreamWrapper startStream = new AstarStreamWrapper(b, AstarStreamWrapper.wsUsage.UNFORMATTED_BINARY);
+                    AICUBEStreamWrapper startStream = new AICUBEStreamWrapper(b, AICUBEStreamWrapper.wsUsage.UNFORMATTED_BINARY);
                     websocket.stream(startStream);
                 }
 
@@ -256,7 +258,7 @@ public class AStar_ASR : MonoBehaviour
     {
         Debug.Log("newword");
         string stringToSend = "{\"right_text\":\"" + textIndex+ "\", \"session_id\":\"" + sessionID + "\", \"sequence_id\":\"" + sentenceIndex+ "\"}";
-        AstarStreamWrapper streamword = new AstarStreamWrapper(stringToSend);
+        AICUBEStreamWrapper streamword = new AICUBEStreamWrapper(stringToSend);
 
         //await waitingForStream;
         //sendingStream = true;
@@ -282,7 +284,7 @@ public class AStar_ASR : MonoBehaviour
             if(directToDAT)
             {
                 byte[] b = new byte[1] { 1 };
-                AstarStreamWrapper endStream = new AstarStreamWrapper(b, AstarStreamWrapper.wsUsage.UNFORMATTED_BINARY);
+                AICUBEStreamWrapper endStream = new AICUBEStreamWrapper(b, AICUBEStreamWrapper.wsUsage.UNFORMATTED_BINARY);
                 websocket.stream(endStream);
             }
             else
@@ -307,12 +309,12 @@ public class AStar_ASR : MonoBehaviour
     #endregion
     #region Callbacks
     //Handle stream results here
-    private void receive_Stream_Result(object sender, Astar.Utils.Websocket.OnStreamResultEventArgs<ASRResult> JSONresult)
+    private void receive_Stream_Result(object sender, AICUBE.Utils.Websocket.OnStreamResultEventArgs<ASRResult> JSONresult)
     {
         queueStreamResult.Enqueue(JSONresult.eventData);
 
     }
-    private void receive_String_Result(object sender, Astar.Utils.Websocket.OnStreamResultEventArgs<string> stringResult)
+    private void receive_String_Result(object sender, AICUBE.Utils.Websocket.OnStreamResultEventArgs<string> stringResult)
     {
         
         queueStringResult.Enqueue(stringResult.eventData);
@@ -332,7 +334,7 @@ public class AStar_ASR : MonoBehaviour
         if (!_recordState || websocket == null) return;
         //Debug.Log("sending");
         //sendingStream = true;
-        AstarStreamWrapper streamwrapper = new AstarStreamWrapper(byteArray, AstarStreamWrapper.wsUsage.ASR_DAT);
+        AICUBEStreamWrapper streamwrapper = new AICUBEStreamWrapper(byteArray, AICUBEStreamWrapper.wsUsage.ASR_DAT);
         await websocket.stream(streamwrapper);
         //sendingStream = false;
         //Debug.Log("audio sending");
@@ -501,7 +503,7 @@ public class AStar_ASR : MonoBehaviour
             }
 
             if (useDebug) Debug.Log(url + " Configuring Server Setup");
-            websocket = new AStarWebSocketStreamController<ASRResult>(url);
+            websocket = new AICUBEWebSocketStreamController<ASRResult>(url);
 
             websocket.OnConnect += StartNewSession;  // methods greatly differs when using direct to dat and not.
             websocket.OnStreamResult += receive_Stream_Result;

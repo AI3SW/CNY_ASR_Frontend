@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using TMPro;
-using Astar.REST;
+using AICUBE.REST;
 using System.Text;
 public class CNY_Dictionary : MonoBehaviour
 {
@@ -73,7 +73,7 @@ public class CNY_Dictionary : MonoBehaviour
         return true;
 
 
-        var connectionResult = await restServer.getJsonData<Astar.REST.CNY.CNY_Phrases>("words");
+        var connectionResult = await restServer.getJsonData<AICUBE.REST.CNY.CNY_Phrases>("words");
         /*
         //pull list to here. dictionary exist as a model of the MVC
         //databaseMapWords pull from list

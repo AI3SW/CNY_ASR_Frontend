@@ -228,11 +228,11 @@ public class MicEncoder : MonoBehaviour{
         {
             StartAll();
         }
-            
-        
+
+
         //if (Time.realtimeSinceStartup <= 3f) return;
         //
-        //AStar_ASR.Singleton._recordReady = true;
+        //AICUBE_ASR.Singleton._recordReady = true;
     }
     private void OnDisable()
     {
@@ -240,7 +240,7 @@ public class MicEncoder : MonoBehaviour{
         {
             StopAll();
         }
-        //AStar_ASR.Singleton._recordReady = false;
+        //AICUBE_ASR.Singleton._recordReady = false;
     }
 
     public void StartAll()

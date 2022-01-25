@@ -4,10 +4,10 @@ using System.Collections.Concurrent;
 using System;
 using System.Threading.Tasks;
 
-using Astar.WebSocket;
-using Astar.WebSocket.Utils;
-using Astar.WebSocket.DataContracts.Receive.HLTASRLib;
-using Astar.WebSocket.DataContracts.Receive;
+using AICUBE.WebSocket;
+using AICUBE.WebSocket.Utils;
+using AICUBE.WebSocket.DataContracts.Receive.HLTASRLib;
+using AICUBE.WebSocket.DataContracts.Receive;
 
 using TMPro;
 using UnityEngine;
@@ -29,7 +29,7 @@ public class Intellik_DATasr : MonoBehaviour , ASR_UploadandReceive, ASR_LiveStr
 {
 
     public MicEncoder _recorder;
-    public AStar_ASR _asr_server;
+    public AICUBE_ASR _asr_server;
 
     SP.MODE services;
 
@@ -64,12 +64,12 @@ public class Intellik_DATasr : MonoBehaviour , ASR_UploadandReceive, ASR_LiveStr
         while (byteQ.Count > 0)
         {
             byte[] currentByte = byteQ.Dequeue();
-            AstarStreamWrapper streamwrapper = new AstarStreamWrapper(currentByte, AstarStreamWrapper.wsUsage.ASR_DAT);
+            AICUBEStreamWrapper streamwrapper = new AICUBEStreamWrapper(currentByte, AICUBEStreamWrapper.wsUsage.ASR_DAT);
             await _asr_server.websocket.stream(streamwrapper);
         }
-        
 
-        //AstarStreamWrapper streamwrapper = new AstarStreamWrapper(data, AstarStreamWrapper.wsUsage.ASR_DAT);
+
+        //AICUBEStreamWrapper streamwrapper = new AICUBEStreamWrapper(data, AICUBEStreamWrapper.wsUsage.ASR_DAT);
         //await _asr_server.websocket.stream(streamwrapper);
 
         Debug.Log("Sending End, waiting last info");

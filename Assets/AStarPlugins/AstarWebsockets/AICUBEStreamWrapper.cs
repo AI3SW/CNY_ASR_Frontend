@@ -7,9 +7,9 @@ using System;
 using System.Net.WebSockets;
 using System.Reflection;
 
-namespace Astar.WebSocket.Utils
+namespace AICUBE.WebSocket.Utils
 {
-	public class AstarStreamWrapper
+	public class AICUBEStreamWrapper
 	{
         #region Variables
         public enum wsUsage {
@@ -36,14 +36,14 @@ namespace Astar.WebSocket.Utils
 		}
 		#endregion
 		#region Constructor   
-		private AstarStreamWrapper() { }
-		public AstarStreamWrapper(byte[] streamToCopy, wsUsage type)
+		private AICUBEStreamWrapper() { }
+		public AICUBEStreamWrapper(byte[] streamToCopy, wsUsage type)
 		{
 			usageType = type;
 			outMsg = ConfigureBinaryData(streamToCopy);
 		}
 
-		public AstarStreamWrapper(string stringToCopy)
+		public AICUBEStreamWrapper(string stringToCopy)
 		{
 			usageType = wsUsage.TEXT;
 			messageType = WebSocketMessageType.Text;

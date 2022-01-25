@@ -64,7 +64,7 @@ public class CNY_GameManager : MonoBehaviour
     private TextMeshProUGUI phraseToSay;
 
     [SerializeField]
-    private AStar_ASR asrServer;
+    private AICUBE_ASR asrServer;
 
     [SerializeField]
     SoundManager soundManager;

@@ -300,7 +300,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u795D\u8BCD\u8BF4\u660E\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e7442d49c423fc64886e25706aec2c3c, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: e7442d49c423fc64886e25706aec2c3c,
     type: 2}
   m_fontSharedMaterials: []
@@ -426,13 +426,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1111482716}
   - {fileID: 1738335973}
   - {fileID: 1836101049}
   - {fileID: 424932255}
   - {fileID: 213812475}
   m_Father: {fileID: 265196471}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &93043001
 GameObject:
@@ -471,7 +470,7 @@ RectTransform:
   - {fileID: 1891961604}
   - {fileID: 1839179960}
   m_Father: {fileID: 265196471}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -616,7 +615,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u963F\u65AF\u987F\u6492\u65E6"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ef0fc27bc9472246b87337452fe27f7, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: 0ef0fc27bc9472246b87337452fe27f7,
     type: 2}
   m_fontSharedMaterials: []
@@ -1520,7 +1519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 83279991}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &227483350
 GameObject:
@@ -1949,6 +1948,7 @@ Transform:
   m_LocalPosition: {x: 1.3893449, y: -1.4157588, z: 406.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1111482716}
   - {fileID: 83279991}
   - {fileID: 729603854}
   - {fileID: 93043002}
@@ -6842,7 +6842,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u821E\u725B\u4F18\u60E0\u5927\u653E\u9001"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ef0fc27bc9472246b87337452fe27f7, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: 0ef0fc27bc9472246b87337452fe27f7,
     type: 2}
   m_fontSharedMaterials: []
@@ -7516,7 +7516,7 @@ Transform:
   - {fileID: 1547455195}
   - {fileID: 1446065216}
   m_Father: {fileID: 83279991}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &424932256
 MonoBehaviour:
@@ -9493,7 +9493,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6E29\n\u9192\n\u61D2\n\u725B\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 36ae807981b32304f88ee71d2ca44c22, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: 36ae807981b32304f88ee71d2ca44c22,
     type: 2}
   m_fontSharedMaterials: []
@@ -9831,7 +9831,7 @@ RectTransform:
   - {fileID: 1047375130}
   - {fileID: 1793200536}
   m_Father: {fileID: 265196471}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10183,7 +10183,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8FCE\n\u63A5\n\u65B0\n\u5E74"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 36ae807981b32304f88ee71d2ca44c22, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: 36ae807981b32304f88ee71d2ca44c22,
     type: 2}
   m_fontSharedMaterials: []
@@ -17159,7 +17159,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111482715}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17167,7 +17167,7 @@ Transform:
   - {fileID: 826930764}
   - {fileID: 1699895126}
   - {fileID: 1585986146}
-  m_Father: {fileID: 83279991}
+  m_Father: {fileID: 265196471}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1111482717
@@ -24983,7 +24983,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u53D1\u9001\u795D\u798F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ef0fc27bc9472246b87337452fe27f7, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: 0ef0fc27bc9472246b87337452fe27f7,
     type: 2}
   m_fontSharedMaterials: []
@@ -25438,94 +25438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59003d2a72236a498da96a922417f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textbox: {fileID: 186177772}
-  OnStringReadyEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnJSONReadyEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 424932256}
-        m_MethodName: onReceiveASR_Results
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnByteReadyEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSessionDisconnect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 424932256}
-        m_MethodName: GameEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnSessionConnect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 424932256}
-        m_MethodName: GameStarting
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnSessionSuddenDisconnect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 424932256}
-        m_MethodName: GamePause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnSessionReconnect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 424932256}
-        m_MethodName: GameContinue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnNoNetwork:
-    m_PersistentCalls:
-      m_Calls: []
-  hostIP: 10.2.1.153
-  api: /ws/streamraw/
-  port: 8008
-  directToDAT: 0
-  useLocalhost: 0
-  sampleRate: 16000
-  useDebug: 1
-  recorder: {fileID: 1836101047}
 --- !u!4 &1738335973
 Transform:
   m_ObjectHideFlags: 0
@@ -25538,7 +25450,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 83279991}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760666225
 GameObject:
@@ -26120,7 +26032,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 83279991}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839179959
 GameObject:
@@ -27284,7 +27196,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8C22\u8C22\u53C2\u4E0E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 36ae807981b32304f88ee71d2ca44c22, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 21898915779869872, guid: 36ae807981b32304f88ee71d2ca44c22,
     type: 2}
   m_fontSharedMaterials: []

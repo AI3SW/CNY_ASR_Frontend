@@ -13,7 +13,7 @@ namespace UnityDecoupledBehavior
         [SerializeField]
         string filename = "CNY";
         [SerializeField]
-        string LOG_DIR = "/Astar/";
+        string LOG_DIR = "/AICUBE/";
         [SerializeField]
         string FILE_EXT = ".txt";
         string LOG_PATH => LOG_DIR + filename + FILE_EXT;
@@ -60,7 +60,7 @@ namespace UnityDecoupledBehavior
 
         public void loadScore()
         {
-            string[] data = Astar.Utils.IOUtils.loadStringLinesfromFile(LOG_PATH);
+            string[] data = AICUBE.Utils.IOUtils.loadStringLinesfromFile(LOG_PATH);
             if (data != null && data.Length > 0)
             {
 
@@ -78,7 +78,7 @@ namespace UnityDecoupledBehavior
         public void saveScore()
         {
 
-            if (Astar.Utils.IOUtils.saveDataToFile(LOG_DIR, LOG_PATH, targetScore.ToString()))
+            if (AICUBE.Utils.IOUtils.saveDataToFile(LOG_DIR, LOG_PATH, targetScore.ToString()))
             {
                 Debug.Log("file saved sucessfuly");
             }
