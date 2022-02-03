@@ -26,3 +26,6 @@ The page controller is found in te Canvas game object. This script simplifies an
 
 BG GO
 is interface to adjust and control the number of cow as well as the post processing objects.
+
+Demo Video
+[![Demo Video for CNY ASR](https://res.cloudinary.com/marcomontalbano/image/upload/v1643866537/video_to_markdown/images/youtube--v8Acs_Zbszw-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=v8Acs_Zbszw "Demo Video for CNY ASR")
